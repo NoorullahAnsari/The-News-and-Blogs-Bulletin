@@ -1,0 +1,36 @@
+.header {
+    background-color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+  }
+  
+  .navLinks {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+   padding-top: 0px;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-weight: 700;
+    font-style: oblique;
+    color: rgb(12, 8, 8);
+  }
+  
+  .navLinks li {
+    margin-right: 20px;
+    
+  }
+  
+  .navLinks li:last-child {
+    margin-right: 0;
+  }
+  .nav {
+    display: flex;
+    justify-content: center;
+  }
+  
