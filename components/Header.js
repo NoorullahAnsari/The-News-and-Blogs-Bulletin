@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <> 
     <nav className=" bg-white ">
-        <div className='card content-center p-1 '>
+        <div className='content-center p-1 '>
           <Link href={"/"} >
         <Image className='rounded m-auto hover:border-2' 
         src={ "/header.png" } 
@@ -20,9 +20,16 @@ const Header = () => {
         height={ `200` } 
         alt="Logo" />
         </Link>
+        
+        {session?.user ?(
+        <div className='text-right mr-8'>Welcome, {session.user.name}</div>):
+        (" ")
+        }
         </div>
-      <div className=" hidden md:flex flex-row justify-center gap-6 bg-blue-100 p-3">
+
+      <div className=" hidden md:flex flex-row font-semibold justify-center gap-6 p-1 border-b-2 border-black">
         <Menu />
+        
         
       </div>
       <div className="float-right m-2 md:hidden">

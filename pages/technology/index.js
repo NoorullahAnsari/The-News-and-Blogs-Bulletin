@@ -1,5 +1,6 @@
 import Homepage from '@/components/Homepage'
 import { createClient } from 'contentful'
+import Head from 'next/head'
 
 export async function getStaticProps(){
   const client = createClient({
@@ -21,6 +22,12 @@ export default function Technology({ news }) {
   return (
     
     <>
+    <Head>
+        <title>Technology</title>
+        <meta name="description" content=" latest news,technology, Ai, Machine Learning, smartphone, Apple, Tesla,Nano technology,Samsung,VR,Computers,Robots" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+
     <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-3"> 
       {
       news.filter(i=>i.fields.tags=='Technology').map(item =>(

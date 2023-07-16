@@ -12,13 +12,13 @@
     "@contentful/rich-text-react-renderer": "^15.17.0",
     "@headlessui/react": "^1.7.15",
     "contentful": "^10.3.4",
-    "i": "^0.3.7",
     "management": "^1.0.2",
     "next": "13.4.9",
     "next-auth": "^4.22.1",
-    "react": "^18.2.0",
+    "react": "18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.10.1"
+    "react-icons": "^4.10.1",
+    "slugify": "^1.6.6"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

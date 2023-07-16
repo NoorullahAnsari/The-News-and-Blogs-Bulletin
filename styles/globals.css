@@ -24,3 +24,22 @@
     font-family: Proxima Nova, system-ui, sans-serif;
   }
 }
+
+/* YourComponent.module.css */
+.marquee-container {
+  overflow: hidden;
+}
+
+.marquee {
+  display: block;
+  animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}

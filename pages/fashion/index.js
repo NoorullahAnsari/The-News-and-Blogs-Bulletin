@@ -1,5 +1,6 @@
 import Homepage from '@/components/Homepage'
 import { createClient } from 'contentful'
+import Head from 'next/head'
 
 export async function getStaticProps(){
   const client = createClient({
@@ -21,6 +22,12 @@ export default function Fashion({ news }) {
   return (
     
     <>
+    <Head>
+        <title>Fashion</title>
+        <meta name="description" content=" latest news, western style, Indian style,Mens fashion, women fashion, kids fashion,fashion designing,men styles,women style, fashion blog" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+
     <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-3"> 
       {
       news.filter(i=>i.fields.tags=='Fashion').map(item =>(
