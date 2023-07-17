@@ -2,19 +2,18 @@ import { useRouter } from 'next/router';
 import slugify from 'slugify';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSession,signIn } from 'next-auth/react';
 
 
 export async function getServerSideProps({ params }) {
   try {
-    const slug = params.slug; // Get the slug from the route parameters
-
-    // Fetch news articles from the News API
+    const slug = params.slug; 
     const response = await fetch(
       'https://newsapi.org/v2/everything?domains=wsj.com&apiKey=824cd70e296b4622a3ae94a3b90d6ae1'
     );
     const data = await response.json();
 
-    // Find the news article with the matching slug or generate the slug dynamically
+    
     const article = data.articles.find((article) => {
       const generatedSlug = slugify(article.title, { lower: true });
       return generatedSlug === slug;
@@ -41,6 +40,7 @@ export async function getServerSideProps({ params }) {
 
 export default function NewsArticlePage({ article }) {
   const router = useRouter();
+  const { data: session } = useSession();
 
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -48,6 +48,7 @@ export default function NewsArticlePage({ article }) {
 
   const { title,urlToImage,publishedAt, description,content,author,url } = article;
 
+  if (session) {
   return (
     
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 p-4">
@@ -83,4 +84,25 @@ export default function NewsArticlePage({ article }) {
               
                  </div>
   );
+} else {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow">
+        <h2
+          className="text-lg p-2 bg-blue-800 w-1/3 text-center text-white font-semibold mb-4 rounded hover:bg-blue-400"
+          onClick={() => signIn()}
+        >
+          Sign in
+        </h2>
+        <p className="text-gray-700 text-xl mb-4">
+          Please sign in to access the content.
+        </p>
+        <p className="text-gray-700 ">
+          Sign in using your credentials to unlock the full experience.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 }

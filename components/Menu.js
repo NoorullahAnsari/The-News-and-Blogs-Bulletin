@@ -47,8 +47,7 @@ return(
           <div>
          {session?.user ?(
           <div onClick={()=> signOut()} className='flex justify-end gap-2 transition duration-300 hover:bg-gray-300 hover:scale-125 rounded active:bg-gray-600'>  
-              {/* <div className='p-2 bg-blue-800 text-white text-sm text-center rounded hover:bg-blue-400 rounded'
-              onClick={()=> signOut()}>Sign out</div> */}
+              
               <AiOutlineLogout className='text-3xl text-red-500'
                />
                <p>Sign Out</p>

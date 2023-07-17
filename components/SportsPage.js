@@ -2,22 +2,20 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 
-export default function Homepage({ news }) {
-  const { title,author,tags,thumbnail,slug } = news.fields;
+export default function SportsPage({ news }) {
+  const { title,author,tags,slug,thumbnail } = news;
 
   return (
     <div className="card relative font-Playfair border-b-4 border-black p-2">
-      <div className="featured">
+        <div className="featured">
         <Image className='w-full md:rounded md:active:scale-150'
-        //  src={ 'https:'+ thumbnail.map(image=>image.fields.file.url)  }
-        src={'https:'+ thumbnail.fields.file.url}
-         width={thumbnail.fields.file.details.image.width}
-         height={thumbnail.fields.file.details.image.height}
-        // width={`500`}
-        // height={`650`}
-        alt='a news picture'
+        src={ thumbnail.url}
+         width={thumbnail.width}
+         height={thumbnail.height}
+        alt={thumbnail.description}
         />
       </div>
+
       <div>
         <div className='text-lg font-light font-sans rounded-full border-black'>{ tags }</div>
         <Link href={'/'+slug}>
